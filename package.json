@@ -1,0 +1,19 @@
+{
+  "name": "limelight.js",
+  "version": "0.0.1",
+  "description": "Tiny 'is it visible' helper for the DOM",
+  "main": "limelight.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thisislawatts/limelight.js.git"
+  },
+  "author": "Luke Watts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thisislawatts/limelight.js/issues"
+  },
+  "homepage": "https://github.com/thisislawatts/limelight.js"
+}
