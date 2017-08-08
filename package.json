@@ -1,6 +1,6 @@
 {
   "name": "limelight.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tiny 'is it visible' helper for the DOM",
   "main": "limelight.js",
   "scripts": {
