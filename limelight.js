@@ -13,9 +13,6 @@ var LimeLight = function($el) {
   this.positionX = this.$el.offset().left;
   this.positionY = this.$el.offset().top;
 
-  // Debugging
-  this.IS_DEBUG = window.location.hostname.match(/dev$/);
-
   if (this.IS_DEBUG) {
     this.d = document.createElement("div");
     this.d.setAttribute(
@@ -52,17 +49,19 @@ jQuery("[data-limelight]").each(function() {
 });
 
 function LimeLightEval() {
+  var y =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop ||
+    0;
+
   for (var i = limeLightItems.length - 1; i >= 0; i--) {
     var item = limeLightItems[i];
 
-    for (var i = limeLightItems.length - 1; i >= 0; i--) {
-      var item = limeLightItems[i];
-
-      if (document.body.scrollTop + window.innerHeight > item.positionY) {
-        item.$el.addClass("ll__focus");
-      } else {
-        item.$el.removeClass("ll__focus");
-      }
+    if (y + window.innerHeight > item.positionY) {
+      item.$el.addClass("ll__focus");
+    } else {
+      item.$el.removeClass("ll__focus");
     }
   }
 
