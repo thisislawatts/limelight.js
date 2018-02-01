@@ -1,39 +1,33 @@
-/* global jQuery */
-
 var limeLightItems = [];
 
-var LimeLight = function($el) {
+var LimeLight = function(el) {
   "use strict";
 
   var _self = this;
 
-  this.$el = $el.addClass("ll__active");
+  _self.el = el;
 
-  this.id = this.$el.attr("id");
-  this.positionX = this.$el.offset().left;
-  this.positionY = this.$el.offset().top;
+  _self.el.classList.add("ll__active");
 
-  if (this.IS_DEBUG) {
-    this.d = document.createElement("div");
-    this.d.setAttribute(
+  _self.positionX = _self.el.offsetLeft;
+  _self.positionY = _self.el.offsetTop;
+
+  if (_self.IS_DEBUG) {
+    _self.d = document.createElement("div");
+    _self.d.setAttribute(
       "style",
-      `position: absolute; top: ${this
+      `position: absolute; top: ${_self
         .positionY}px; left: 0; z-index: 99; background: lime; padding: .25em .5em;`
     );
-    this.d.innerHTML = `Pos: ${this.positionY}px ${this.id}`;
-    document.body.appendChild(this.d);
+    _self.d.innerHTML = `Pos: ${_self.positionY}px`;
+    document.body.appendChild(_self.d);
   }
-
-  setInterval(function() {
-    _self.updatePosition();
-  }, 1000);
-
-  return this;
+  return _self;
 };
 
-LimeLight.prototype.updatePosition = function(argument) {
-  this.positionX = this.$el.offset().left;
-  this.positionY = this.$el.offset().top;
+LimeLight.prototype.updatePosition = function() {
+  this.positionX = this.el.offsetLeft;
+  this.positionY = this.el.offsetTop;
 
   if (this.IS_DEBUG) {
     this.d.setAttribute(
@@ -44,9 +38,9 @@ LimeLight.prototype.updatePosition = function(argument) {
   }
 };
 
-jQuery("[data-limelight]").each(function() {
-  limeLightItems.push(new LimeLight(jQuery(this)));
-});
+var llElements = document.querySelectorAll("[data-limelight]");
+
+llElements.forEach(el => limeLightItems.push(new LimeLight(el)));
 
 function LimeLightEval() {
   var y =
@@ -59,9 +53,9 @@ function LimeLightEval() {
     var item = limeLightItems[i];
 
     if (y + window.innerHeight > item.positionY) {
-      item.$el.addClass("ll__focus");
+      item.el.classList.add("ll__focus");
     } else {
-      item.$el.removeClass("ll__focus");
+      item.el.classList.remove("ll__focus");
     }
   }
 
