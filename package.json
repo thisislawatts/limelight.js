@@ -1,10 +1,10 @@
 {
   "name": "limelight.js",
   "version": "0.0.2",
-  "description": "Tiny 'is it visible' helper for the DOM",
+  "description": "Tiny `is it visible` helper for the DOM",
   "main": "limelight.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint limelight.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/thisislawatts/limelight.js/issues"
   },
-  "homepage": "https://github.com/thisislawatts/limelight.js"
+  "homepage": "https://github.com/thisislawatts/limelight.js",
+  "devDependencies": {
+    "eslint": "^4.16.0"
+  }
 }
